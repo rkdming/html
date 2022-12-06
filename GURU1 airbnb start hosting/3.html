@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>에어비앤비 숙소 호스트가 되어보세요</title>
+
+
+
+	<link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="https://a0.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+	<script
+	  src="https://code.jquery.com/jquery-3.6.0.min.js"
+	  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	  crossorigin="anonymous"></script> <!--스크롤-->
+
+	<script>
+		var $j = jQuery.noConflict();
+	</script>
+
+
+
+	<style type="text/css">
+		
+		#logo_black:hover{
+			background: rgb(247, 247, 247);
+		}
+
+		#logo_white:hover{
+			background: rgb(49, 49, 49);
+		}
+
+		#arrow_down: hover{
+			background: rgb(49, 49, 49);
+
+		}
+
+		.play_pause_button{
+			width: 25px;
+			height: 25px;
+		}
+
+		.video_controls_top{
+			background: rgb(20, 20, 20);
+			cursor: pointer;
+			display: flex;
+		   position: absolute;
+		   cursor: pointer;
+		   border-radius: 50%;
+		   right: 831px;
+		   bottom: 98px;
+		   z-index: 150;
+		   width: 40px;
+		   height: 40px;
+		   justify-content: center;
+			align-items: center;
+		}
+
+		.video_controls_bottom{
+			background: black;
+			cursor: pointer;
+			display: flex;
+		   position: absolute;
+		   cursor: pointer;
+		   border-radius: 50%;
+		   top: 5670px;
+		   left: 50px;
+		   z-index: 150;
+		   width: 40px;
+		   height: 40px;
+		   opacity:0.6;
+		   justify-content: center;
+			align-items: center;
+		}
+
+		
+		html{
+    		scroll-behavior: smooth;
+    	}
+    	header{
+    		height: 1009px;
+    	}
+      body {
+         margin: 0; padding: 0; height: 100%;
+
+      }
+      		#h_left { 
+			background: black; 
+			color: white;   
+
+			font-size : 65px; 
+			text-align: center;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			width: 50%; 
+			height: 1009px; 
+			float: left;
+		}
+
+		.top_right{
+			width: 50%;
+			height: 1009px;
+			float: left;
+		}
+		#top_video{
+			
+			display: flex;
+
+		}
+		.section1 {
+			height: 2600px;
+			background:linear-gradient( to top, black 75%, white 25% );
+			clear: both;
+			padding-top: 150px;
+
+		}
+		.q{
+			color: rgb(176, 176, 176);
+			font-size: 40px;
+
+		}
+
+		.section2_a{
+			color : black;
+			font-size: 22px;
+		}
+
+		.select{
+      font-size: 40px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      background: black;
+      color: white;
+      border-bottom: 3px solid white;
+
+    }
+
+      .option{
+      background: white;
+      color: black;
+      font-size: 20px;
+      height: 50px;
+    }
+
+    #bottom_left{
+			width: 50%;
+			height: 1009px;
+			float: left;
+			
+
+		}
+		#bottom_right{
+			background: black;
+			color: white;
+			text-align: center;
+
+		
+			width: 50%;
+			height: 1009px; 
+			float: left;
+
+			
+		}
+
+		#bottom_video{
+			object-fit: fill;
+			
+
+		}
+		
+
+
+		/*슬라이더*/
+
+
+
+        .img_info{
+            color: white;
+            font-size: 25px;
+            font-weight: 10;
+
+        }
+
+        .host_name img{ 
+            height: 40px;
+
+        }
+
+        .host_location{
+            color: rgb(176, 176, 176)
+        }
+
+        
+
+        .img{
+            box-shadow: 0px 0px 10px black;
+            border-radius: 7px;
+        }
+
+        .prev_btt{
+        		position: absolute;
+        		left: 59%;
+        		z-index: 100;
+        		background: rgb(68, 68, 68);
+        }
+
+        .prev_btt:hover{
+        		background: rgb(49, 49, 49);
+        }
+
+        .next_btt{		
+        		position: absolute;
+        		left: 62%;
+        		z-index: 100;
+        		background: rgb(68, 68, 68);
+        }
+
+        .next_btt:hover{
+        		background: rgb(49, 49, 49);
+        }
+
+        #host1,#host3,#host4,#host5,#host6{
+            display: none;
+        }
+        footer{
+			margin: 0;
+			background-color: rgb(247, 247, 247);
+      		height: 570px;
+      		padding-right: 15%;
+      		padding-left: 15%;
+      		clear: both;
+		}
+
+	   .menu__up{
+	   	  padding-top: 30px;
+	      width:100%;
+	      
+	      /*margin-left: 20px;*/
+	      margin-bottom: 50px;
+	   }
+
+	   .menu__up td{
+	      vertical-align: top;
+	   }
+
+   		.menu__up ul li{
+     		margin-top: 15px;
+      		font-size: 14px;
+      		font-weight: 10;   
+      		list-style: none;
+   		}
+
+   		.menu__up h4{
+      		color: #222222;
+      		font-size: 13px;
+   		}
+
+   		.menu_element{
+   			text-decoration : none;
+   			color: black;
+   		}
+
+   		.menu_element:hover{
+   			text-decoration: underline;
+   			cursor: pointer;
+   			
+   		}
+
+	   .menu__down{
+	      width: 100%;
+	      border-top: 1px solid lightgray;
+	      padding-top: 20px;
+	      padding-bottom: 20px;7
+	   }
+
+	   .copyright{
+	      font-size: 14px;
+	      font-weight: 500;
+	      display: inline-block;
+	   }
+
+	   .menu__ul /*ul li*/{
+	      font-size: 14px;
+	      font-weight: 500;
+	      float: left;
+	      margin-left: 10px;   
+	      list-style-type: none;
+	   }
+
+	   .kr {
+	      text-align: right;
+	   }
+
+	   .kr img{
+	      width: 25px;
+	      height: 25px;
+	   }
+
+	   .logo__down img{
+	      width: 23px;
+	      height: 23px;
+	   }
+
+
+	   .footer_bottom > img {
+	   	margin-left: 15px;
+	   }
+	</style>
+
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+</head>
+<body>
+
+		
+	<div class="except_bottom"><header class="header">
+
+ 			<div class="scroll" style="width: 100%; height: 80px; background:white; z-index: 200;">
+ 				<a href="../page1/1.html"><span style="position: absolute; left: 50px; top:20px; cursor: pointer; z-index: 250; "><img id="logo_black" src="media/logo_black_edit.png" style="border-radius: 50%; z-index: 250;"></span></a> 
+ 				<span style="position: absolute; right:30px; top:15px; cursor: pointer;"><img src="media/host_start_btt.png"></span>
+			
+			</div>
+
+			<div class="start_host"><img src="media/host_start_btt.png" style="position: absolute; float:right; right: 43px; top: 925px; cursor: pointer; z-index: 150; width: 180px;"></div>
+
+			
+			<a href=../page1/1.html><span style=" position: absolute; left: 40px; margin-top: 40px; z-index: 150;"><img id="logo_white" src="media/logo_white_edit.png" style="border-radius: 50%; "></span></a>
+
+			<div id="h_left">
+				
+				<div>
+					<b>
+					<div>에어비앤비의</div>
+					<div style="margin-top:-15px">핵심을 이루는</div>
+					<div style="margin-top:-15px">호스팅</div>
+				</b></div><br>
+			</div>
+
+			<a href="#whenever_wherever"><span style="display: flex; position:absolute; bottom: 50px; left: 24.5%;"><img id="arrow_down" src="media/arrow_down_edit.png" style="border-radius: 50%; z-index: 200; "></span></a>
+
+			<div class="top_right">
+				<video id = "top_video" src="media/top_right_video.mp4" autoplay="autoplay" muted="muted" loop height="1009px" width="100%" style="object-fit: cover;"></video>
+
+				<div>
+					<div id="play_btt" class="video_controls_top"><img src="media/play_edit.png" class="play_pause_button"></div>
+					<div id="pause_btt" class="video_controls_top"><img src="media/pause2_edit.png"  class="play_pause_button"></div>
+				</div>
+		
+
+
+			</div>
+	</header>
+
+  <section class="section1">
+
+
+		<div style="color: black; font-size: 65px; margin-left: 5%;" id="whenever_wherever">
+			<b><div>언제 어디서든</div>
+				<div style="margin-top:-15px">호스팅하실 수 있습니다</div></b>
+		</div>
+
+
+
+		<div class="mid" style="padding:100px 50px; height: 650px;">
+
+
+			
+			<div id = "gallery" style="position: relative;">
+				<div class="gallery_element">
+                    <img src="media/mid1.webp" class="img" style="cursor: pointer;"><br><br>
+                    <div id="host1"><div class="img_info" style="width: 445px;">스튜디오 호스팅 덕에 새로운 삶을 사는 느낌이에요. 좋은 인연과 잊을 수 없는 추억은 덤이죠.</div><br><br>
+                    <div class = "host_name"><img src="media/mid_name1.webp" ></div><br>
+                    <div class="host_location">밀라노의 호스트</div></div>
+            </div>
+
+				<div class="gallery_element">
+                    <img src="media/mid2.webp" class="img" style="cursor: pointer;"><br><br>
+                    <div id="host2"><div class="img_info" style="width: 490px;">집을 숙소로 호스팅하면서 자영업자가 되어 경제적 자유에 한 걸음 더 가까워질 수<br> 있었어요.</div><br><br>
+                    <div class = "host_name" ><img src="media/mid_name2.webp"></div><br>
+                    <div class="host_location">애틀랜타의 호스트</div></div>
+            </div>
+
+				<div class="gallery_element">
+                    <img src="media/mid3.webp" class="img" style="cursor: pointer;"><br><br>
+                    <div id="host3"><div class="img_info" style="width: 490px;">파스타 만들기 체험을 호스팅함으로써 문화 보존에 기여할 수 있습니다.</div><br><br><br>
+                    <div class = "host_name" ><img src="media/mid_name3.webp"></div><br>
+                    <div class="host_location">애틀랜타의 호스트</div></div>
+            </div>
+
+				<div class="gallery_element">
+                    <img src="media/mid4.webp" class="img" style="cursor: pointer;"><br><br>
+                    <div id="host4"><div class="img_info" style="width:460px">에어비앤비 덕분에 제가 제일 좋아하는 일을 업으로 삼을 수 있게 되었어요. 바로 집에서 게스트를 맞이하고 돌보는 일이죠.</div><br><br>
+                    <div class = "host_name"><img src="media/mid_name4.webp"></div><br>
+                    <div class="host_location">치앙마이의 호스트</div></div>
+            </div>
+
+				<div class="gallery_element">
+                    <img src="media/mid5.webp" class="img" style="cursor: pointer;"><br><br>
+                    <div id="host5"><div class="img_info" style="width : 490px">베두인 텐트 호스팅을 통해 세계 각지에서 온 분들을 만날 수 있었습니다.</div><br><br><br>
+                    <div class = "host_name"><img src="media/mid_name5.webp"></div><br>
+                    <div class="host_location">와디럼의 호스트</div></div>
+
+            </div>
+
+				<div class="gallery_element">
+                    <img src="media/mid6.webp" class="img" style="cursor: pointer;"><br><br>
+                    <div id="host6"><div class="img_info">게스트가 소중한 사람들과 자연 속에서 교감할 수 있도록 친환경 숙소를 호스팅하는 게 참 보람 있어요.</div><br><br>
+                    <div class = "host_name"><img src="media/mid_name6.webp"></div><br>
+                    <div class="host_location">파라치의 호스트</div></div>
+            </div>
+
+			</div>
+		</div>
+
+		<div class="arrowSlider">
+				<div class="prev_btt" style="color: white;  cursor: pointer; border-radius: 50%; font-weight: bold; font-size: 25px; text-align: center;">&nbsp;<&nbsp;</div>
+				<div class="next_btt" style="color: white;  cursor: pointer; border-radius: 50%; font-weight: bold; font-size: 25px; text-align: center;">&nbsp;>&nbsp;</div>
+		</div>
+
+		<div class="mid_bottom" style="text-align: center; margin-top: 300px;">
+			<div class="q"><b>어떤 종류의 숙소인가요?</b></div>
+			
+			<div class="selectbox">
+		    <form>
+		      <select class="select" >
+		        <option value="1" class="option" selected>공간 전체</option>
+		        <option value="2" class="option">개인실</option>
+		        <option value="3" class="option">다인실</option>
+		      </select>
+		    </form>
+		  </div><br>
+
+			<div class="q"><b>숙박 인원은 몇 명인가요?</b></div>
+
+			<div class="selectbox">
+		    <form>
+		      <select class="select" >
+		        <option value="1" class="option">게스트 1명</option>
+		        <option value="2" class="option">게스트 2명</option>
+		        <option value="3" class="option">게스트 3명</option>
+		        <option value="4" class="option" selected>게스트 4명</option>
+		        <option value="5" class="option">게스트 5명</option>
+		        <option value="6" class="option">게스트 6명</option>
+		        <option value="7" class="option">게스트 7명</option>
+		        <option value="8" class="option">게스트 8명</option>
+		        <option value="9" class="option">게스트 9명</option>
+		        <option value="10" class="option">게스트 10명</option>
+		        <option value="11" class="option">게스트 11명</option>
+		        <option value="12" class="option">게스트 12명</option>
+		        <option value="13" class="option">게스트 13명</option>
+		        <option value="14" class="option">게스트 14명</option>
+		        <option value="15" class="option">게스트 15명</option>
+		      </select>
+		    </form>
+		  </div><br>
+
+		  <div class="q"><b>숙소 위치는 어디인가요?</b></div>
+
+			<div class="selectbox">
+		    <form>
+		      <select class="select" >
+		        <option value="1" class="option">Songpa-dong</option>
+		        <option value="2" class="option" selected>Gongneoung-dong</option>
+		        <option value="3" class="option">Bangi-dong</option>
+		      </select>
+		    </form>
+		  </div><br>
+
+			<div style="color:white; font-size: 40px; margin-top: 50px;"><b>월 최대 ₩1,378,479의 수입을 올리세요.*</b></div><br><br>
+			<div style="color: white; text-decoration: underline; cursor: pointer;">에어비앤비가 예상 수입을 산정하는 방법</div>
+
+			<div style="margin-top: 170px; display: flex; justify-content: center;">
+				<div style="float: left; cursor: pointer;"><img src="media/mid_bottom.webp" class="img" style="width:330px;height: 350px;"><div style="font-size: 18px;color:white; text-align:left;"><br><b>숙소 호스팅하기</b></div></div>
+
+				<div style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+				<div style="float:left; cursor: pointer;"><img src="media/mid_bottom2.webp" class="img" style="width:330px;height: 350px;"><div style="font-size: 18px;color:white; text-align:left;"><br><b>체험 호스팅하기</b></div></div>
+			</div>
+		</div>
+  </section>
+
+	<section class="section2" style="width:100%">
+		<div style="color: black; font-size: 65px; margin-top: 150px;margin-left:5%">
+			<b><div>성공적인 호스팅에</div><div style="margin-top:-15px;">유용한 자료</div></b></div>
+
+		<div style="display: flex; justify-content: center; margin-top:100px; margin-bottom: 150px;">
+			<div style=" cursor: pointer;">
+				<img src="media/info_img1.jpg" class="img" style="width:530px;height:340px;object-fit: cover; box-shadow: none"><br>
+				<div class = "section2_a" style="margin-top:10px;"><b>
+					에어비앤비의<br>호스트 지원 방법 알아보기</b>
+				</div>
+			</div>
+
+			<div style=" margin-left: 30px; margin-right: 30px;  cursor: pointer;">
+				<img src="media/info_img2.webp" class="img" style="width:530px;height:340px;object-fit: cover; box-shadow: none;"><br>
+				<div class = "section2_a" style="margin-top:10px"><b>
+					슈퍼호스트에게<br>문의하기</b>
+				</div>
+			</div>
+
+			<div style="cursor: pointer;">
+				<img src="media/info_img3.webp" class="img" style="width:530px;height:340px; object-fit: cover; box-shadow: none;" ><br>
+				<div class = "section2_a" style="margin-top:10px"><b>
+					더 많은 호스팅 자료<br>살펴보기</b>
+				</div>
+			</div>
+		</div>	
+	</section></div>
+
+	<section class="bottom">
+		
+
+
+		<div id="bottom_left" >
+			<video id="bottom_video" src="media/bottom_video.webm" autoplay="autoplay" muted="muted" loop height="1009px"  style="width : 100%; "></video>
+
+			<div>
+				<div id="play_btt_bottom" class="video_controls_bottom"><img src="media/play_edit.png" class="play_pause_button"></div>
+				<div id="pause_btt_bottom" class="video_controls_bottom"><img src="media/pause2_edit.png" class="play_pause_button"></div>
+			</div>
+
+
+		</div>
+
+
+		<div id="bottom_right">
+			<div style="font-size: 50px;"><b><br><br><br><br><br><br><div>에어비앤비에서</div><div style="margin-top:-10px;">
+			호스팅을 시작해보세요</div></b></div><br><br>
+
+			<div style="font-size : 18px; color: rgb(250, 250, 250);">에어비앤비 호스트가 되어보세요. 에어비앤비가<br>
+			모든 단계에서 도와드립니다.</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+			<hr style=" border: 0; margin: 0; width: 100%; height: 1px; background: rgb(34, 34, 34);">
+
+			<span style="display: flex; position:absolute; right:30px;  cursor: pointer;"><img src="media/bottom_start_btt.png" id="bottom_start_btt" style="float:right;margin-top: 23px; margin-right: 30px;"></span>
+
+		</div>
+
+	</section>
+
+
+
+
+	<footer>
+         
+         <div class="footer__area">
+            <table class="menu__up">
+               <td>
+                  <h4 style="text-indent: 3em;">소개</h4>
+                  <ul>
+                     <a class="menu_element"><li>에어비앤비 이용 방법</li></a>
+                     <a class="menu_element"><li>뉴스룸</li></a>
+                     <a class="menu_element"><li>에어비앤비 2021</li></a>
+                     <a class="menu_element"><li>투자자 정보</li></a>
+                     <a class="menu_element"><li>에어비앤비 플러스</li></a>
+                     <a class="menu_element"><li>에어비앤비 Luxe</li></a>
+                     <a class="menu_element"><li>호텔투나잇</li></a>
+                     <a class="menu_element"><li>에어비앤비 비즈니스 프로그램</li></a>
+                     <a class="menu_element"><li>호스트 분들이 있기에 가능합니다</li></a>
+                     <a class="menu_element"><li>채용정보</li></a>
+                     <a class="menu_element"><li>창립자 편지</li></a>
+                  </ul>
+               </td>
+               
+               
+               <td>
+                  <h4 style="text-indent: 3em;">커뮤니티</h4>
+                  <ul>
+                     <a class="menu_element"><li>다양성 및 소속감</li></a>
+                     <a class="menu_element"><li>접근성</li></a>
+                     <a class="menu_element"><li>에어비앤비 어소시에이트</li></a>
+                     <a class="menu_element"><li>구호 인력을 위한 숙소</li></a>
+                     <a class="menu_element"><li>게스트 추천</li></a>
+                     <a class="menu_element"><li>Airbnb.org</li></a>
+                  </ul>
+               </td>
+
+               <td>
+                  <h4 style="text-indent: 3em;">호스팅하기</h4>
+                  <ul>
+                     <a class="menu_element"><li>숙소 호스팅</li></a>
+                     <a class="menu_element"><li>온라인 체험 호스팅하기</li></a>
+                     <a class="menu_element"><li>체험 호스팅하기</li></a>
+                     <a class="menu_element"><li>책임감 있는 호스팅</li></a>
+                     <a class="menu_element"><li>자료 센터</li></a>
+                     <a class="menu_element"><li>커뮤니티 센터</li></a>
+                  </ul>
+               </td>
+
+               <td>
+                  <h4 style="text-indent: 3em;">에어비앤비 지원</h4>
+                  <ul>
+                     <a class="menu_element"><li>에어비앤비의 코로나19 대응 방안</li></a>
+                     <a class="menu_element"><li>도움말 센터</li></a>
+                     <a class="menu_element"><li>예약 취소 옵션</li></a>
+                     <a class="menu_element"><li>에어비앤비 이웃 민원 지원</li></a>
+                     <a class="menu_element"><li>신뢰와 안전</li></a>
+                  </ul>
+               </td>
+            </table>
+         </div>      
+
+
+         <div class="menu__down" style="margin-top: 10px;">
+            <section>
+               <div class="company" style="float: left; width: 60%;">
+                  <div class="copyright" style="float: left;">&copy; 2021 Airbnb, Inc.</div>
+
+                  <div class="menu__ul">
+                  	<span>· </span><a class="menu_element"><span>개인정보 처리 방침</span></a>&nbsp;
+                  	<span>· </span><a class="menu_element"><span>이용 약관</span></a>&nbsp;
+                  	<span>· </span><a class="menu_element"><span>사이트맵</span></a>&nbsp;
+                  	<span>· </span><a class="menu_element"><span>한국의 변경된 환불 정책</span></a>&nbsp;
+                  	<span>· </span><a class="menu_element"><span>회사 세부정보</span></a>
+                  </div>
+               </div>
+
+               <div class="logo__down" style="float: right;"> 
+                  <div class="footer_bottom">
+                     <a class="menu_element"><img src="media/facebook.png"></a>
+                     <a class="menu_element"><img src="media/twitter.png" style=" margin-left:20px"></a>
+                     <a class="menu_element"><img src="media/insta.png" style=" margin-left:20px"></a>
+                     <a class="menu_element"><img src="media/blog.png" style=" margin-left:20px"></a>
+                     <a class="menu_element"><img src="media/pencil.png" style=" margin-left:20px"></a>
+                  
+                 </div>
+               </div>    
+
+               <div id="footer_right">
+               	<div class="kr" style="float: right;" >
+
+	                  <div style="float: left;" class="menu_element">
+	                  	<img src="media/earth.png">
+	                  </div>
+	                  &nbsp;
+	                  <div  style="border-bottom: 1px solid; font-size: 14px; float: left; cursor:pointer">
+	                  	한국어(KR)
+	                  </div>&nbsp;&nbsp;
+
+
+
+	                  <div style="float: left; margin-left:30px; cursor:pointer;">
+	                  	₩
+	                  </div>
+	                  &nbsp;&nbsp;
+	                  <div style="border-bottom: 1px solid; font-size: 15px;font-weight: 380; float: left;  cursor:pointer;">
+	                  	KRW
+	                  </div>
+                     
+						</div>    
+               
+            </section>
+            
+            
+
+
+         </div>      
+   </footer>
+
+
+   <script>
+        $(function(){
+            $('#gallery').slick({
+              centerMode: true,
+              slide : 'div',
+              centerPadding: '60px',
+              slidesToShow: 3,
+              slideToScroll : 1,
+              infinite : false,
+              speed : 500,
+              arrows : true,
+              dots : false,
+              autopoay : false,
+              pauseOnHover : false,
+              vertical : false,
+              initialSlide : 1,
+              draggable : true,
+              focusOnSelect: true,
+
+
+
+
+
+              prevArrow : $('.prev_btt'),
+              nextArrow : $('.next_btt')
+  
+            });
+
+            $('#gallery').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+
+                if(currentSlide === 0) {
+                    $('#gallery #host1').show(0);
+                }
+                else {
+                    $('#gallery #host1').hide();
+                }
+
+                if(currentSlide === 1) {
+                    $('#gallery #host2').show(0);
+                }
+
+                else {
+                    $('#gallery #host2').hide();
+                }
+
+                if(currentSlide === 2) {
+                    $('#gallery #host3').show(0);
+                }
+
+                else {
+                    $('#gallery #host3').hide();
+                }
+
+                if(currentSlide === 3) {
+                    $('#gallery #host4').show(0);
+                }
+
+                else {
+                    $('#gallery #host4').hide();
+                }
+
+                if(currentSlide === 4) {
+                    $('#gallery #host5').show(0);
+                }
+
+                else {
+                    $('#gallery #host5').hide();
+                }
+
+                if(currentSlide === 5) {
+                    $('#gallery #host6').show(0);
+                }
+
+                else {
+                    $('#gallery #host6').hide();
+                }
+
+            });
+    
+        })     
+   </script>
+
+
+	 <script type="text/javascript">
+		$j(document).ready(function(){
+
+			    var navHeight = $j(".header").height();
+			    var hideHeight =  $j(".except_bottom").height();
+
+			    $j(".scroll").hide();
+
+			    $j(window).scroll(function(){
+			        var rollIt = $j(this).scrollTop() >= navHeight; 
+			        var hideIt = $j(this).scrollTop() >= hideHeight
+
+
+			    if(rollIt){ 
+
+			            $j(".scroll").show().css({"position":"fixed"})
+
+			            if(hideIt){
+			            	$j(".scroll").hide()
+			            }
+			        }
+			        else{
+			            $j(".scroll").hide();
+			        }
+			    });
+
+
+			    
+			});
+	 </script>
+
+
+
+<script type="text/javascript">
+	//play pause
+	var playBtn = document.getElementById('play_btt');
+	var pauseBtn = document.getElementById('pause_btt');
+	var top_video = document.getElementById('top_video');
+
+
+	playBtn.addEventListener('click', pausePlayHandler, false);
+	pauseBtn.addEventListener('click', pausePlayHandler, false);
+
+
+	function pausePlayHandler(e) {
+	   if (top_video.paused) {
+	       // If paused, then play
+	       top_video.play();
+	        // Show pause button and hide play button
+	       pauseBtn.style.visibility = 'visible';
+	       playBtn.style.visibility = 'hidden';
+	   } else {
+	       // If playing, then pause
+	       top_video.pause();
+	       // Show play button and hide pause button
+	       pauseBtn.style.visibility = 'hidden';
+	       playBtn.style.visibility = 'visible';
+	   }
+	}
+
+</script>
+
+<script type="text/javascript">
+	//play pause
+	var playBtn2 = document.getElementById('play_btt_bottom');
+	var pauseBtn2 = document.getElementById('pause_btt_bottom');
+	var bottom_video = document.getElementById('bottom_video');
+
+
+	playBtn2.style.visibility = 'hidden';
+
+	playBtn2.addEventListener('click', pausePlayHandler, false);
+	pauseBtn2.addEventListener('click', pausePlayHandler, false);
+
+
+	function pausePlayHandler(e) {
+	   if (bottom_video.paused) {
+	       // If paused, then play
+	       bottom_video.play();
+	        // Show pause button and hide play button
+	       pauseBtn2.style.visibility = 'visible';
+	       playBtn2.style.visibility = 'hidden';
+	   } else {
+	       // If playing, then pause
+	       bottom_video.pause();
+	       // Show play button and hide pause button
+	       pauseBtn2.style.visibility = 'hidden';
+	       playBtn2.style.visibility = 'visible';
+	   }
+	}
+
+</script>
+
+
+
+</body>
+</html>
